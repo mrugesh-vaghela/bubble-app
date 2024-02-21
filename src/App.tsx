@@ -11,8 +11,9 @@ interface BubbleProps {
  * @returns 
  */
 const BubbleComponent: React.FC<BubbleProps> = ({ number, color, showBubble }) => {
+  const testId= `test-${number}-${showBubble}`
   return (
-    showBubble ? <div className={color}>{number}</div>: <></>
+    showBubble ? <div className={color} data-testid={testId}>{number}</div>: <></>
   );
 };
 
@@ -41,6 +42,7 @@ function App() {
     }
   };
   const transferBubble = () => {    
+    console.log('transfer called')
     setBubbleNumber(bubbleNumber);      
     if(bubbleNumber) {
       showBubble[bubbleNumber] = true;
@@ -60,8 +62,8 @@ function App() {
     <div className='main-container'>
     <div className='bubble-container'>
         <h1>Container</h1>
-        <div className='bubble-table'>
-          <BubbleComponent number = {1} color={'green-bubble'} showBubble={showBubble['1']}></BubbleComponent>
+        <div className='bubble-table' data-testid='bubble-table'>
+          <BubbleComponent number = {1} color={'green-bubble'} showBubble={showBubble['1']} data-testid='green-in-table'></BubbleComponent>
           <BubbleComponent number = {2} color={'pink-bubble'} showBubble={showBubble['2']}></BubbleComponent>
           <BubbleComponent number = {3} color={'red-bubble'} showBubble={showBubble['3']}></BubbleComponent>
           <BubbleComponent number = {4} color={'purple-bubble'} showBubble={showBubble['4']}></BubbleComponent>
@@ -70,15 +72,15 @@ function App() {
         
       </div>
         <div className='bubble-stack'>          
-          <BubbleComponent number = {1} color={'green-bubble'} showBubble={!showBubble['1']}></BubbleComponent>
+          <BubbleComponent  number = {1} color={'green-bubble'} showBubble={!showBubble['1']} ></BubbleComponent>
           <BubbleComponent number = {2} color={'pink-bubble'} showBubble={!showBubble['2']}></BubbleComponent>
           <BubbleComponent number = {3} color={'red-bubble'} showBubble={!showBubble['3']}></BubbleComponent>
           <BubbleComponent number = {4} color={'purple-bubble'} showBubble={!showBubble['4']}></BubbleComponent>
           <BubbleComponent number = {5} color={'yellow-bubble'}showBubble={!showBubble['5']}></BubbleComponent>
         </div>
-        <input type='text' name='bubbleNumber' placeholder={'Enter 1 to 5'} className='input' value={bubbleNumber} onChange={handleChange} ></input>
-        <button type='button' className='button' onClick={transferBubble} disabled={buttonDisabled}>Transfer</button>
-        <button type='button' className='button' onClick={resetForm} >Reset</button>
+        <input data-testid='bubble-number' type='text' name='bubbleNumber' placeholder={'Enter 1 to 5'} className='input' value={bubbleNumber} onChange={handleChange} ></input>
+        <button data-testid='swap-button' type='button' className='button' onClick={transferBubble} disabled={buttonDisabled}>Transfer</button>
+        <button data-testid='reset-button' type='button' className='button' onClick={resetForm} >Reset</button>
       </div>      
       
     </div>
