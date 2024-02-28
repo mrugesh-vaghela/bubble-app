@@ -14,6 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+You will see this on your browser
+![Screenshot 2024-02-28 at 1 30 45 PM](https://github.com/mrugesh-vaghela/bubble-app/assets/34519057/9c528057-1f62-430b-a087-94b0a60818bd)
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
